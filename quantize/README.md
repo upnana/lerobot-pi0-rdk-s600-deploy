@@ -1,35 +1,7 @@
-# quantize/
+# quantize/ · 量化备忘
 
-把 **已验证的 BF16 π0 checkpoint** 量化编译成 S600 可跑的三段 HBM。
+教程正文：[docs/04-quantize.md](../docs/04-quantize.md)
 
-## 前置条件
-
-- [ ] `train/` 产出的 checkpoint 存在
-- [ ] 服务器 BF16 真机基线正常（任务能完成）
-- [ ] 已安装 D-Robotics OE / LLM S600 SDK（教程中的工具链版本）
-- [ ] 本地已 clone [`rdk_LeRobot_tools`](https://github.com/D-Robotics/rdk_LeRobot_tools) 的 `s600` 分支
-
-## 级联顺序（不要打乱）
-
-```text
-1. 从训练数据抽校准样本（覆盖完整任务阶段）
-2. 量化 SigLIP  → 板上跑出真实视觉特征
-3. 用 SigLIP HBM 输出校准并量化 PaliGemma
-4. 用 PaliGemma 真实 KV 校准并量化 Action Expert
-5. 核对 Prompt Embedding / Normalization Stats / SHA256
-```
-
-教程强调：**下游校准必须看到上游 HBM 的真实输出**，不能三段各自用浮点中间量独立量化后硬拼。
-
-## 本目录放什么
-
-- 自己整理的命令备忘（`steps.md`）
-- 路径、版本、校准样本清单
-- 与官方脚本的差异说明
-
-大文件（`.hbm` / ONNX / 校准 bin）不要提交 git。
-
-## 参考
-
-- 论坛：[量化原理 + 量化实操](https://forum.d-robotics.cc/t/topic/35528)
-- 官方：`rdk_LeRobot_tools/models/pi0/`
+| 文件 | 说明 |
+|------|------|
+| `steps.md` | 逐步命令、路径、SHA256（边做边填） |
