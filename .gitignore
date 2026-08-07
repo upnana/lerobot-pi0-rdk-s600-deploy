@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Checkpoints & weights
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+*.hbm
+checkpoints/
+outputs/
+pretrained_model/
+pi0_base/
+
+# Data & calibration
+datasets/
+data/
+calibration/
+*.parquet
+*.mp4
+*.mkv
+
+# Robot / local secrets
+*.json.bak
+calibration_*.json
+tokens/
+.wandb/
+
+# Build / IDE
+build/
+dist/
+.idea/
+.vscode/
+*.log
+.DS_Store
