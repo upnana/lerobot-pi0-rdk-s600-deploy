@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：待填。细节 checklist 也可写在 [`../quantize/steps.md`](../quantize/steps.md)。
+> 状态：待做。可勾选细节见 [`../quantize/steps.md`](../quantize/steps.md)。
 
 ## 核心原则（自己的话）
 
@@ -18,17 +18,35 @@
 2. 再跑 PaliGemma HBM，用**真实 KV** 校准 Expert  
 3. 不要三段都只拿浮点中间结果各自量化完硬拼  
 
+精度分配直觉（来自论坛实践）：
+
+| 段 | 危险点 | 我采用的方向 |
+|----|--------|--------------|
+| SigLIP | position embedding 歪了 → 抓偏 | position 留 FP16；其余 dynamic / quant8 |
+| PaliGemma | attention / RoPE 污染整段 KV | attention matmul `fixed16` |
+| Expert | 10 步误差回灌 + 反归一化放大 | 尽量 dynamic，输出保 FP16 |
+
+## 前置
+
+- [ ] [03 BF16 基线](./03-bf16-baseline.md) 通过  
+- [ ] `rdk_LeRobot_tools` `s600` + SDK 1.0.2  
+- [ ] 统一：`export PI0_VALID_CAMERA_SLOTS=2`  
+- [ ] 相机键：**`front wrist`**（不是 `side`）  
+- [ ] prompt：`$TASK`
+
 ## 步骤总览
 
-1. 从训练数据抽覆盖完整阶段的校准样本  
-2. SigLIP → 编译 HBM → 板上导出特征  
-3. PaliGemma → 编译 HBM → 板上导出 KV  
-4. Expert → 编译 HBM  
-5. 核对 stats / prompt embedding / SHA256  
+```text
+1. 抽 50 条真实校准样本（覆盖接近/抓取/叠放）
+2. SigLIP → HBM → 板上 dump vision embedding
+3. PaliGemma（用真实 SigLIP 输出）→ HBM → 板上 dump 36×KV
+4. Expert（用真实 KV）→ HBM
+5. 打包 prompt embedding / norm_stats / SHA256
+```
+
+具体命令模板已写在 [`../quantize/steps.md`](../quantize/steps.md)，路径按 [01 环境](./01-env.md) 的环境变量。
 
 ## 我的命令与结果
-
-把每次真正跑通的命令记在 [`../quantize/steps.md`](../quantize/steps.md)。本章只保留结论：
 
 | 段 | HBM 路径 | SHA256 | 备注 |
 |----|----------|--------|------|
@@ -38,8 +56,9 @@
 
 ## 本章完成标准
 
-- [ ] 三份 HBM + 配套文件齐全
-- [ ] 与 BF16 在同分布样本上做过基本数值/行为对比（能记多少记多少）
+- [ ] 三份 HBM + prompt embedding + norm_stats 齐全  
+- [ ] 三段来自同一次训练 / 同一相机 schema，并用 SHA256 绑定  
+- [ ] 与 BF16 在同分布样本上做过基本对比  
 
 ## 下一章
 

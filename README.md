@@ -5,17 +5,31 @@
 > 参考（不是照搬）：[地瓜论坛原帖](https://forum.d-robotics.cc/t/topic/35528) · 官方工具 [`rdk_LeRobot_tools` s600](https://github.com/D-Robotics/rdk_LeRobot_tools)  
 > 本仓写的是**我自己走通时的步骤、命令和踩坑**，以本机实操为准。
 
+## 这次复现的任务
+
+| 项 | 我的配置 |
+|----|----------|
+| 策略 | LeRobot `policy.type=pi0`（不是 π0.5） |
+| 机器人 | SO-101 follower（6 维关节） |
+| 数据集 | `stack_3blocks_white_blue_black`（199 episodes） |
+| 相机 | `front` + `wrist`（640×480，30 FPS） |
+| 任务指令 | `Stack the blocks from bottom to top: white, blue, black.` |
+| 板端 | RDK S600 + LLM S600 SDK |
+
+和官方示例的主要差异：**相机叫 `wrist` 不是 `side`**；我这边还用了 **relative actions**。量化和部署时不能照抄官方成品 HBM / JSON。
+
 ## 教程目录
 
 | 章节 | 内容 | 状态 |
 |------|------|------|
-| [00 总览](./docs/00-overview.md) | 目标、整条链路、和官方的关系 | 骨架 |
-| [01 环境](./docs/01-env.md) | 训练机 / 板端 / 依赖版本 | 待填 |
-| [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 待填 |
-| [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待填 |
-| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | 待填 |
-| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待填 |
+| [00 总览](./docs/00-overview.md) | 目标、整条链路、和官方的关系 | 已写 |
+| [01 环境](./docs/01-env.md) | 训练机 / 板端 / 路径备忘 | 已更新 |
+| [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 已有 ckpt |
+| [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
+| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | 校准已好，待 SDK |
+| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
+| [完整命令](./quantize/COMMANDS.md) | 校准 → 量化 → 部署粘贴命令 | 已写 |
 
 ## 一条线记住
 
@@ -43,8 +57,17 @@ pi0_base
 
 ## 进度（自己改）
 
-- [ ] 环境搭好
-- [ ] π0 训完并保存 checkpoint
+- [x] 教程仓搭好，目录与章节定稿
+- [x] 数据集就绪（`stack_3blocks_white_blue_black`）
+- [x] 完整 π0 checkpoint 落盘（`model.safetensors` ~8.3G）
+- [x] clone `rdk_LeRobot_tools`（`s600`）
+- [x] 导出 `norm_stats.json` + 抽 50 条校准样本（`pi0_stack3_040000_real50_v2`）
 - [ ] BF16 基线任务成功
-- [ ] 三段 HBM 产出
+- [ ] 三段 HBM 产出（需 SDK 1.0.2）
 - [ ] S600 真机跑通
+
+可粘贴命令见 [`quantize/COMMANDS.md`](./quantize/COMMANDS.md)。
+
+## 给读者
+
+如果你也想复现：先读 [00 总览](./docs/00-overview.md)，再按章节顺序做。命令里的路径是我本机的，换成你的即可。官方脚本仍以 `rdk_LeRobot_tools` 为准；本仓记录的是「我怎么改才跑通」。
