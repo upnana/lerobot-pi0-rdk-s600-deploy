@@ -24,8 +24,10 @@
 ## 本目录放什么
 
 - **可粘贴完整命令**：[`COMMANDS.md`](./COMMANDS.md)（按本机 ckpt 写好）
+- **量化环境说明**：[`ENV.md`](./ENV.md)（`oellm_s600` + SDK 1.0.2）
 - 勾选备忘：[`steps.md`](./steps.md)
 - 与官方脚本的差异说明（`front`/`wrist`、relative actions 等）
+
 
 大文件（`.hbm` / ONNX / 校准 bin）不要提交 git。
 

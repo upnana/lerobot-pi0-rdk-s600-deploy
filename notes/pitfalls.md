@@ -56,6 +56,14 @@
 - **处理：** 脚本增加 `--tolerance-s 0.04`，并对坏帧尝试邻近 index；校准输出在 `.../pi0_stack3_040000_real50_v2`
 - **是否量化相关：** 否（校准前置）
 
+### 2026-08-08 — 量化环境必须单独用 Python 3.10
+
+- **现象：** `hbdk4` / `leap_llm` wheel 是 `cp310`，无法装进 `lerobot_alohamini`（3.12）。
+- **环境：** 训练机
+- **原因：** SDK `oellm_build` 只提供 py310 包。
+- **处理：** 新建 conda `oellm_s600`（Python 3.10），详见 `quantize/ENV.md`。
+- **是否量化相关：** 是（环境）
+
 ## 待填（上板后追加）
 
 ### YYYY-MM-DD — （标题）
