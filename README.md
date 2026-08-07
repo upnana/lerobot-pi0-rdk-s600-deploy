@@ -30,6 +30,7 @@
 | [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
+| [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
 | [量化环境](./quantize/ENV.md) | SDK 1.0.2 + conda `oellm_s600` | 已写 |
 | [完整命令](./quantize/COMMANDS.md) | 校准 → 量化 → 部署粘贴命令 | 已写 |
 
