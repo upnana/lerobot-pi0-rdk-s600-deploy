@@ -18,7 +18,7 @@
 2. 再跑 PaliGemma HBM，用**真实 KV** 校准 Expert  
 3. 不要三段都只拿浮点中间结果各自量化完硬拼  
 
-精度分配直觉（来自论坛实践 + [我自己的 SigLIP 分析](../notes/siglip-quantize-analysis.md)）：
+精度分配直觉（见 [我自己的 SigLIP 分析](../notes/siglip-quantize-analysis.md)）：
 
 | 段 | 危险点 | 我采用的方向 |
 |----|--------|--------------|
