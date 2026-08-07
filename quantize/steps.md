@@ -48,13 +48,17 @@ python models/pi0/tools/prepare_pi0_calibration_v5_2cam.py \
 
 > `--camera-slots 3` 是否保留：取决于最终 HBM 编译图是否使用「2 真相机 + 1 mask」。与训练 `empty_cameras` 不一致时先对齐再量化。
 
-## Step 1 — SigLIP
+## Step 1 — SigLIP（本机编译已完成 · 2026-08-08）
 
-- [ ] 量化 + 编译 HBM
+- [x] 量化 + 编译 HBM（`oellm_s600`，~11 min）
 - [ ] 板上跑双相机样本，导出视觉特征给 PaliGemma
 
+实际从 `models/pi0/tools` 目录跑（需能 import `pi0_sdk_precision_patch`）：
+
 ```bash
-python3 models/pi0/tools/quantize_siglip_real_calib.py \
+conda activate oellm_s600
+cd "$RDK_TOOLS/models/pi0/tools"
+python -u quantize_siglip_real_calib.py \
   --model-dir "$CHECKPOINT" \
   --calibration-dir "$CALIB_DIR" \
   --output-dir "$QUANT_OUT/siglip" \
@@ -74,17 +78,28 @@ python3 models/pi0/tools/quantize_siglip_real_calib.py \
   --layernorm-mode standard
 ```
 
-板上 dump（脚本名以官方仓为准）：
+产物：
+
+```text
+$QUANT_OUT/siglip/pi0_siglip_ptq.hbm              # 425MB
+$QUANT_OUT/siglip/quantization_manifest.json
+$QUANT_OUT/siglip/calibration_forward.json
+$QUANT_OUT/siglip/quantize_siglip.log
+```
+
+结果 SHA256（`pi0_siglip_ptq.hbm`）：
+
+```text
+123a9da5ac188917cde03fc504266ea3eede501a99d3168952af6817ceeb8915
+```
+
+精度确认：`patch=quant8`，`position=fp16`，相机键 `front`+`wrist`，`valid_camera_slots=2`。
+
+板上 dump（下一步）：
 
 ```bash
 # 终端 A：收集 SigLIP HBM 输出
 # 终端 B：临时 deployment 只绑新 SigLIP HBM 后启动 engine
-```
-
-结果 SHA256：
-
-```text
-（待填）
 ```
 
 ## Step 2 — PaliGemma

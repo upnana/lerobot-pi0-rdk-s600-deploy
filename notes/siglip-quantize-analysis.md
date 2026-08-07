@@ -129,13 +129,13 @@ python3 models/pi0/tools/quantize_siglip_real_calib.py \
 
 ## 7. 我用来判断「这一段算做完」的标准
 
-- [ ] `$QUANT_OUT/siglip/` 下有可用的 `.hbm`
-- [ ] 精度配置确认：position 是 fp16，不是误用 quant8
-- [ ] 有效相机槽 = 2，且和校准目录里的 `front`/`wrist` 一致
+- [x] `$QUANT_OUT/siglip/` 下有可用的 `.hbm`（2026-08-08，425MB）
+- [x] 精度配置确认：position 是 fp16，不是误用 quant8
+- [x] 有效相机槽 = 2，且和校准目录里的 `front`/`wrist` 一致
 - [ ] 板上 dump 过真实 SigLIP 输出，目录已拉回训练机
-- [ ] 记下 SHA256，后面 deployment manifest 要绑死
+- [x] 记下 SHA256：`123a9da5ac188917cde03fc504266ea3eede501a99d3168952af6817ceeb8915`
 
-在此之前，我不会宣称「量化通了」——最多只能说「SigLIP 编译产物出来了」。
+在板上 dump 完成前，我只宣称「SigLIP 本机编译产物出来了」，还不能说整段量化链路走完。
 
 ## 8. 一句话收束
 

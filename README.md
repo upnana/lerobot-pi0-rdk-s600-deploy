@@ -26,7 +26,7 @@
 | [01 环境](./docs/01-env.md) | 训练机 / 板端 / 路径备忘 | SDK + `oellm_s600` 已好 |
 | [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 已有 ckpt |
 | [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
-| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | 校准已好，待跑三段 |
+| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | SigLIP 已出，待板端 dump |
 | [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
@@ -66,8 +66,9 @@ pi0_base
 - [x] clone `rdk_LeRobot_tools`（`s600`）
 - [x] 导出 `norm_stats.json` + 抽 50 条校准样本（`pi0_stack3_040000_real50_v2`）
 - [x] 安装 LLM S600 SDK 1.0.2 + conda `oellm_s600`（见 [`quantize/ENV.md`](./quantize/ENV.md)）
+- [x] SigLIP HBM 编译完成（SHA256 见 [`docs/04-quantize.md`](./docs/04-quantize.md)）
 - [ ] BF16 基线任务成功
-- [ ] 三段 HBM 产出
+- [ ] 板上 dump SigLIP 特征 → PaliGemma / Expert HBM
 - [ ] S600 真机跑通
 
 可粘贴命令见 [`quantize/COMMANDS.md`](./quantize/COMMANDS.md)。

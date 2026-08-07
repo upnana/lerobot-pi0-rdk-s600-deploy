@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：待做。可勾选细节见 [`../quantize/steps.md`](../quantize/steps.md)。
+> 状态：SigLIP 本机 HBM 已出（2026-08-08）；待板上 dump → PaliGemma / Expert。
 
 ## 核心原则（自己的话）
 
@@ -28,11 +28,12 @@
 
 ## 前置
 
-- [ ] [03 BF16 基线](./03-bf16-baseline.md) 通过  
-- [ ] `rdk_LeRobot_tools` `s600` + SDK 1.0.2  
-- [ ] 统一：`export PI0_VALID_CAMERA_SLOTS=2`  
-- [ ] 相机键：**`front wrist`**（不是 `side`）  
-- [ ] prompt：`$TASK`
+- [ ] [03 BF16 基线](./03-bf16-baseline.md) 通过（建议补，未阻塞本机 SigLIP 编译）  
+- [x] `rdk_LeRobot_tools` `s600` + SDK 1.0.2 + conda `oellm_s600`  
+- [x] 统一：`export PI0_VALID_CAMERA_SLOTS=2`  
+- [x] 相机键：**`front wrist`**（不是 `side`）  
+- [x] prompt：`$TASK`  
+- [x] 校准集 50 条：`pi0_stack3_040000_real50_v2`
 
 ## 步骤总览
 
@@ -50,9 +51,11 @@
 
 | 段 | HBM 路径 | SHA256 | 备注 |
 |----|----------|--------|------|
-| SigLIP | | | |
-| PaliGemma | | | |
-| Expert | | | |
+| SigLIP | `/home/rxn/gemma/output/pi0_stack3_040000_sdk102/siglip/pi0_siglip_ptq.hbm` | `123a9da5ac188917cde03fc504266ea3eede501a99d3168952af6817ceeb8915` | 425MB；patch quant8 / position fp16；编译 ~629s |
+| PaliGemma | | | 待板上 dump SigLIP 特征后量化 |
+| Expert | | | 待 PaliGemma KV dump 后量化 |
+
+大文件不进 git；SHA256 与 `quantization_manifest.json` 留在本机产物目录。
 
 ## 本章完成标准
 

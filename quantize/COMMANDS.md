@@ -13,8 +13,9 @@
 | `rdk_LeRobot_tools` | 已 clone，`s600` | `/home/rxn/rdk_LeRobot_tools` |
 | `norm_stats.json` | 已导出 | 同 checkpoint 目录 |
 | 校准集 50 条 | 已生成 | `.../pi0_stack3_040000_real50_v2`（需 `--tolerance-s 0.04`） |
-| S600 SDK 1.0.2 | 本机未装 | **量化编译**要在有 SDK 的机器/容器里做；**板端**装 runtime 跑 HBM |
-| S600 板子 | 有 | 用来 dump 校准中间量 + 最终部署 |
+| SigLIP HBM | 已编译 | `.../siglip/pi0_siglip_ptq.hbm`，SHA256 见 `docs/04-quantize.md` |
+| S600 SDK 1.0.2 | 训练机已装 + `oellm_s600` | 板上 dump / runtime 另配 |
+| S600 板子 | 有 | 下一步：dump SigLIP 真实视觉特征 |
 
 确认权重：
 
