@@ -132,6 +132,8 @@ EOF
 
 ## 5. 为什么还不能立刻 dump SigLIP
 
+先读概念笔记：[浮点垫脚 vs dump](../notes/bootstrap-vs-dump.md)。
+
 `validate_pi0_config.py` / standalone 要求这些文件**真实存在**：
 
 1. `siglip_hbm_path` ← **已有**（我们的 HBM）
