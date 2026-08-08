@@ -64,7 +64,47 @@
 - **处理：** 新建 conda `oellm_s600`（Python 3.10），详见 `quantize/ENV.md`。
 - **是否量化相关：** 是（环境）
 
-## 待填（上板后追加）
+### 2026-08-08 — USB-A 当调试口 / Type-C 插错
+
+- **现象：** 电脑不出 CH340，或串口完全无回显。
+- **环境：** S600 整机
+- **原因：** USB-A 是 Host；调试要用板上 **Type-C 闪连口**（两颗 CH340）。J16 是 CAN 12 针，不是 Type-C。
+- **处理：** 改插调试 Type-C；详见 `docs/06-board-access.md`。
+- **是否量化相关：** 否（接入）
+
+### 2026-08-08 — brltty 抢走 ttyUSB1
+
+- **现象：** `ttyUSB1` 出现后几秒消失；`minicom: 没有那个文件或目录`；dmesg 有 `brltty sets config #1`。
+- **环境：** Ubuntu PC
+- **原因：** 盲文服务 `brltty` 抢 CH340。
+- **处理：** `systemctl mask brltty brltty-udev` 或 `apt remove brltty`。
+- **是否量化相关：** 否（接入）
+
+### 2026-08-08 — minicom 硬件流控默认开着
+
+- **现象：** 921600 开着口但只有乱码/无 `login:`。
+- **环境：** minicom 2.8
+- **原因：** 串口设置里「硬件流控制=是」。
+- **处理：** `Ctrl-A O` → 串口设置 → `F` 改为否，保存 dfl。
+- **是否量化相关：** 否（接入）
+
+### 2026-08-08 — 局域网扫到的 SSH 不是本板
+
+- **现象：** `192.168.54.5` / `.13` 开 22 端口，但 `sunrise`/`root` 默认密码全拒。
+- **环境：** 同 WiFi
+- **原因：** 那些是别的机器或密码已改；本板实际在 `wlan0` = **`192.168.54.29`**，且 `eth0..3` 全 DOWN。
+- **处理：** 串口 `ip -br a` 再 SSH；不要盲试默认密码。
+- **是否量化相关：** 否（接入）
+
+### 2026-08-08 — dump 缺 PaliGemma/Expert 无法起 engine
+
+- **现象：** 只有 SigLIP HBM；`validate_pi0_config.py` 要求三段路径 + `fixed_prompt_embedding.bin`。
+- **环境：** 板端 standalone
+- **原因：** cascade 的第一次 dump 仍要完整 engine 才能跑；SDK 自带 hammer-beat Pi0 HBM 与 leap_llm 图不兼容。
+- **处理：** 本机先 bootstrap 浮点中间量的 PaliGemma（+ embedding）/Expert，再 dump 真实 SigLIP；见 `docs/07-board-prepare-siglip-dump.md`。
+- **是否量化相关：** 是
+
+## 待填
 
 ### YYYY-MM-DD — （标题）
 

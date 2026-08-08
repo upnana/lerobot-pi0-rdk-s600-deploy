@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：SigLIP 本机 HBM 已出（2026-08-08）；待板上 dump → PaliGemma / Expert。
+> 状态：SigLIP 本机 HBM 已出（2026-08-08）；板端接入与文件已就绪（见 [06](./06-board-access.md) / [07](./07-board-prepare-siglip-dump.md)）；待 bootstrap 后两段 → 板上 dump → 重编 PaliGemma / Expert。
 
 ## 核心原则（自己的话）
 

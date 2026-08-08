@@ -15,7 +15,9 @@
 | 校准集 50 条 | 已生成 | `.../pi0_stack3_040000_real50_v2`（需 `--tolerance-s 0.04`） |
 | SigLIP HBM | 已编译 | `.../siglip/pi0_siglip_ptq.hbm`，SHA256 见 `docs/04-quantize.md` |
 | S600 SDK 1.0.2 | 训练机已装 + `oellm_s600` | 板上 dump / runtime 另配 |
-| S600 板子 | 有 | 下一步：dump SigLIP 真实视觉特征 |
+| S600 板子 | **已 SSH** `root@192.168.54.29` | 串口/接入见 `docs/06-board-access.md`；文件已拷见 `docs/07-...` |
+| 板端 standalone | 已编译 | `/root/rdk_LeRobot_tools/.../pi0_standalone_sdk102` |
+| PaliGemma / Expert HBM | 缺 | dump 前需 bootstrap（浮点中间量可先编一版） |
 
 确认权重：
 

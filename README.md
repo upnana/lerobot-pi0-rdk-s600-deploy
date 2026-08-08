@@ -28,6 +28,8 @@
 | [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
 | [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | SigLIP 已出，待板端 dump |
 | [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
+| [06 板端接入](./docs/06-board-access.md) | Type-C 串口、brltty、SSH、IP | **已走通** `192.168.54.29` |
+| [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝；缺 PaliGemma/Expert |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -67,8 +69,10 @@ pi0_base
 - [x] 导出 `norm_stats.json` + 抽 50 条校准样本（`pi0_stack3_040000_real50_v2`）
 - [x] 安装 LLM S600 SDK 1.0.2 + conda `oellm_s600`（见 [`quantize/ENV.md`](./quantize/ENV.md)）
 - [x] SigLIP HBM 编译完成（SHA256 见 [`docs/04-quantize.md`](./docs/04-quantize.md)）
+- [x] S600 串口 + SSH（`root@192.168.54.29`，详见 [`docs/06-board-access.md`](./docs/06-board-access.md)）
+- [x] 板上已拷 SigLIP HBM / 校准图 / 工具仓，并编好 `pi0_standalone_sdk102`（[`docs/07-board-prepare-siglip-dump.md`](./docs/07-board-prepare-siglip-dump.md)）
 - [ ] BF16 基线任务成功
-- [ ] 板上 dump SigLIP 特征 → PaliGemma / Expert HBM
+- [ ] bootstrap PaliGemma/Expert → 板上 dump SigLIP 特征 → 重编级联
 - [ ] S600 真机跑通
 
 可粘贴命令见 [`quantize/COMMANDS.md`](./quantize/COMMANDS.md)。

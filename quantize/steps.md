@@ -95,11 +95,17 @@ $QUANT_OUT/siglip/quantize_siglip.log
 
 精度确认：`patch=quant8`，`position=fp16`，相机键 `front`+`wrist`，`valid_camera_slots=2`。
 
-板上 dump（下一步）：
+板上接入与文件准备（已完成）：
+
+- [x] 串口 + SSH → [`docs/06-board-access.md`](../docs/06-board-access.md)（`root@192.168.54.29`）
+- [x] rsync HBM/校准/工具 + 编 standalone → [`docs/07-board-prepare-siglip-dump.md`](../docs/07-board-prepare-siglip-dump.md)
+- [ ] bootstrap PaliGemma/Expert 后才能真正 dump
+
+板上 dump（仍待做；命令见 `COMMANDS.md` §3.2）：
 
 ```bash
 # 终端 A：收集 SigLIP HBM 输出
-# 终端 B：临时 deployment 只绑新 SigLIP HBM 后启动 engine
+# 终端 B：完整 deployment JSON 后启动 engine（不能只有 SigLIP）
 ```
 
 ## Step 2 — PaliGemma
