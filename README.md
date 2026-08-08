@@ -29,7 +29,8 @@
 | [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | SigLIP 已出，待板端 dump |
 | [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
 | [06 板端接入](./docs/06-board-access.md) | Type-C 串口、brltty、SSH、IP | **已走通** `192.168.54.29` |
-| [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝；缺 PaliGemma/Expert |
+| [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝；缺 Expert |
+| [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -72,8 +73,9 @@ pi0_base
 - [x] SigLIP HBM 编译完成（SHA256 见 [`docs/04-quantize.md`](./docs/04-quantize.md)）
 - [x] S600 串口 + SSH（`root@192.168.54.29`，详见 [`docs/06-board-access.md`](./docs/06-board-access.md)）
 - [x] 板上已拷 SigLIP HBM / 校准图 / 工具仓，并编好 `pi0_standalone_sdk102`（[`docs/07-board-prepare-siglip-dump.md`](./docs/07-board-prepare-siglip-dump.md)）
+- [x] 浮点垫脚临时 PaliGemma（[`docs/08-paligemma-float-bootstrap.md`](./docs/08-paligemma-float-bootstrap.md)）
 - [ ] BF16 基线任务成功
-- [ ] bootstrap PaliGemma/Expert → 板上 dump SigLIP 特征 → 重编级联  
+- [ ] bootstrap Expert → 板上 dump SigLIP 特征 → 重编级联  
   （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 

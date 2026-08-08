@@ -99,7 +99,8 @@ $QUANT_OUT/siglip/quantize_siglip.log
 
 - [x] 串口 + SSH → [`docs/06-board-access.md`](../docs/06-board-access.md)（`root@192.168.54.29`）
 - [x] rsync HBM/校准/工具 + 编 standalone → [`docs/07-board-prepare-siglip-dump.md`](../docs/07-board-prepare-siglip-dump.md)
-- [ ] bootstrap PaliGemma/Expert 后才能真正 dump
+- [x] 浮点垫脚临时 PaliGemma → [`docs/08-paligemma-float-bootstrap.md`](../docs/08-paligemma-float-bootstrap.md)
+- [ ] bootstrap Expert 后才能真正 dump
 
 板上 dump（仍待做；命令见 `COMMANDS.md` §3.2）：
 

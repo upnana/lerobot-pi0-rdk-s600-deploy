@@ -17,7 +17,7 @@
 | S600 SDK 1.0.2 | 训练机已装 + `oellm_s600` | 板上 dump / runtime 另配 |
 | S600 板子 | **已 SSH** `root@192.168.54.29` | 串口/接入见 `docs/06-board-access.md`；文件已拷见 `docs/07-...` |
 | 板端 standalone | 已编译 | `/root/rdk_LeRobot_tools/.../pi0_standalone_sdk102` |
-| PaliGemma / Expert HBM | 缺 | dump 前需 bootstrap（浮点中间量可先编一版） |
+| PaliGemma / Expert HBM | **临时 PaliGemma 已出**；Expert 仍缺 | 见 `docs/08-paligemma-float-bootstrap.md` |
 
 确认权重：
 

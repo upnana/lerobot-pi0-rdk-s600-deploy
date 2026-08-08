@@ -101,7 +101,15 @@
 - **现象：** 只有 SigLIP HBM；`validate_pi0_config.py` 要求三段路径 + `fixed_prompt_embedding.bin`。
 - **环境：** 板端 standalone
 - **原因：** cascade 的第一次 dump 仍要完整 engine 才能跑；SDK 自带 hammer-beat Pi0 HBM 与 leap_llm 图不兼容。
-- **处理：** 本机先 bootstrap 浮点中间量的 PaliGemma（+ embedding）/Expert，再 dump 真实 SigLIP；见 `docs/07-board-prepare-siglip-dump.md`。
+- **处理：** 本机先 bootstrap 浮点中间量的 PaliGemma（+ embedding）/Expert，再 dump 真实 SigLIP；见 `docs/07-board-prepare-siglip-dump.md`、`docs/08-paligemma-float-bootstrap.md`。
+- **是否量化相关：** 是
+
+### 2026-08-08 — PaliGemma bootstrap：transformers 5.x / 无 tokenizer
+
+- **现象：** `GemmaConfig` 无 `rope_theta`；`AutoTokenizer` 报 LeRobot `config.json` 无 `model_type`。
+- **环境：** `oellm_s600`
+- **原因：** transformers 升到 5.14；ckpt 目录不是 HF 格式。
+- **处理：** `transformers==4.57.6`；`export PI0_TOKENIZER_DIR=/home/rxn/models/paligemma-3b-pt-224`（脚本读该环境变量）。详见 `docs/08-paligemma-float-bootstrap.md`。
 - **是否量化相关：** 是
 
 ## 待填
