@@ -134,6 +134,13 @@
 - **处理：** `attention_matmul_mode=fixed16`；linear/MLP `dynamic`；`--prompt-embedding-input`；`--max-hbm-bytes 2140000000`。详见 `docs/11-paligemma-formal.md`。
 - **是否量化相关：** 是
 
+### 2026-08-09 — 正式 Expert（板上 PaliGemma KV 校准）
+
+- **现象：** KV dump 50/50 后需重编 Expert。
+- **环境：** `oellm_s600`，`--paligemma-kv-dir=.../paligemma_hbm_kv_real50`
+- **处理：** 全 dynamic；产出 `expert/pi0_gemma_expert_ptq.hbm`，`paligemma_kv_source=precomputed_s600_paligemma_hbm`。详见 `docs/13-expert-formal.md`。
+- **是否量化相关：** 是
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）

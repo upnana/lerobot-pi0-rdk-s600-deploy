@@ -1,10 +1,8 @@
 # 12 · 正式 PaliGemma 上板（为 dump KV 做准备）
 
-> 状态：**第 1–2 步已完成**（2026-08-09）——文件已上板 + stage JSON 已校验  
+> 状态：**第 1–3 步已完成**（2026-08-09）——正式 PaliGemma 上板、KV dump、拉回并编正式 Expert（[13](./13-expert-formal.md)）  
 > 前置：[11 正式 PaliGemma](./11-paligemma-formal.md) · SigLIP dump：[10](./10-board-siglip-dump.md)  
-> 本步目标：用 **正品 SigLIP + 正式 PaliGemma + 临时 Expert** 凑齐 engine，下一步才能 dump **36× Expert KV**。
-
-**还没跑 KV dump。** 第 3 步（两终端 + `--save-expert-kv`）见文末。
+> 本步目标：用 **正品 SigLIP + 正式 PaliGemma + 临时 Expert** 凑齐 engine，dump **36× Expert KV**。
 
 ---
 
@@ -204,5 +202,5 @@ expert_kv_00_fp16.bin … expert_kv_35_fp16.bin
 
 - [x] rsync 正式 PaliGemma HBM + embedding 上板  
 - [x] stage JSON 上传 + `validate` OK  
-- [ ] 两终端 dump KV（`--save-expert-kv`）  
-- [ ] 拉回本机 → 编正式 Expert  
+- [x] 两终端 dump KV（`--save-expert-kv`）  
+- [x] 拉回本机 → 编正式 Expert（见 [13](./13-expert-formal.md)）  

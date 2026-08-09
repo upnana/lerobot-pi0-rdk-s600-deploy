@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：SigLIP 正品 + **正式 PaliGemma** 已出（[11](./11-paligemma-formal.md)）；临时 Expert 仍垫脚；下一步 dump KV → 正式 Expert。
+> 状态：**三段正式 HBM 均已出** — SigLIP · PaliGemma（[11](./11-paligemma-formal.md)）· Expert（[13](./13-expert-formal.md)）。下一步：三份正式上板 + 最终 deployment JSON。
 
 ## 核心原则（自己的话）
 
@@ -53,7 +53,7 @@
 |----|----------|--------|------|
 | SigLIP | `/home/rxn/gemma/output/pi0_stack3_040000_sdk102/siglip/pi0_siglip_ptq.hbm` | `123a9da5ac188917cde03fc504266ea3eede501a99d3168952af6817ceeb8915` | 425MB；patch quant8 / position fp16；编译 ~629s |
 | PaliGemma | `paligemma/` | **正式已出**（`precomputed_s600_siglip_hbm`） | [11](./11-paligemma-formal.md) |
-| Expert | `expert_float_bootstrap/` | 临时已出；正式版待 KV dump | [09](./09-expert-float-bootstrap.md) |
+| Expert | `expert/` | **正式已出**（`precomputed_s600_paligemma_hbm`） | [13](./13-expert-formal.md) |
 
 大文件不进 git；SHA256 与 `quantization_manifest.json` 留在本机产物目录。
 

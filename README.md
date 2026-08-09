@@ -26,8 +26,8 @@
 | [01 环境](./docs/01-env.md) | 训练机 / 板端 / 路径备忘 | SDK + `oellm_s600` 已好 |
 | [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 已有 ckpt |
 | [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
-| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | SigLIP + 正式 PaliGemma 已出；待 dump KV / Expert |
-| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做 |
+| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | **三段正式 HBM 均已出** |
+| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做（正式三份待上板） |
 | [06 板端接入](./docs/06-board-access.md) | Type-C 串口、brltty、SSH、IP | **已走通** `192.168.54.29` |
 | [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝 SigLIP；PaliGemma/Expert 待补传 |
 | [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
@@ -35,7 +35,8 @@
 | [10 板上 SigLIP dump](./docs/10-board-siglip-dump.md) | 三份上板、改 wrist、两终端 dump | **已完成**（50/50 已拉回） |
 | [10b dump 流程讲解](./docs/10b-siglip-dump-where-and-why.md) | 每步在 PC 还是板、在干什么 | 已写 |
 | [11 正式 PaliGemma](./docs/11-paligemma-formal.md) | 用板上 SigLIP dump 重编；fixed16 等 | **已完成** |
-| [12 正式 PaliGemma 上板](./docs/12-formal-paligemma-on-board.md) | rsync 正式 HBM/embedding、部署 JSON、校验 | **steps 1–2 done** |
+| [12 正式 PaliGemma 上板](./docs/12-formal-paligemma-on-board.md) | rsync 正式 HBM/embedding、KV dump 准备 | **已完成**（含 KV dump） |
+| [13 正式 Expert](./docs/13-expert-formal.md) | 拉回 KV + 用板上 PaliGemma KV 重编 | **已完成** |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -83,9 +84,10 @@ pi0_base
 - [x] 浮点垫脚临时 Expert（[`docs/09-expert-float-bootstrap.md`](./docs/09-expert-float-bootstrap.md)）
 - [x] 板上 SigLIP dump 50/50 拉回（[`docs/10-board-siglip-dump.md`](./docs/10-board-siglip-dump.md)）
 - [x] 正式 PaliGemma（板上 SigLIP dump 校准，[`docs/11-paligemma-formal.md`](./docs/11-paligemma-formal.md)）
+- [x] 正式 PaliGemma 上板 + KV dump（[`docs/12-formal-paligemma-on-board.md`](./docs/12-formal-paligemma-on-board.md)）
+- [x] 正式 Expert（板上 PaliGemma KV 校准，[`docs/13-expert-formal.md`](./docs/13-expert-formal.md)）
 - [ ] BF16 基线任务成功
-- [x] 正式 PaliGemma 上板（KV dump 准备，[`docs/12-formal-paligemma-on-board.md`](./docs/12-formal-paligemma-on-board.md) steps 1–2）
-- [ ] dump KV → 编正式 Expert  
+- [ ] 三份正式 HBM 上板 + 最终 deployment JSON → 离线 smoke / 真机  
   （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 
