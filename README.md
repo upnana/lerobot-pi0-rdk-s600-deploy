@@ -35,6 +35,7 @@
 | [10 板上 SigLIP dump](./docs/10-board-siglip-dump.md) | 三份上板、改 wrist、两终端 dump | **已完成**（50/50 已拉回） |
 | [10b dump 流程讲解](./docs/10b-siglip-dump-where-and-why.md) | 每步在 PC 还是板、在干什么 | 已写 |
 | [11 正式 PaliGemma](./docs/11-paligemma-formal.md) | 用板上 SigLIP dump 重编；fixed16 等 | **已完成** |
+| [12 正式 PaliGemma 上板](./docs/12-formal-paligemma-on-board.md) | rsync 正式 HBM/embedding、部署 JSON、校验 | **steps 1–2 done** |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -82,7 +83,8 @@ pi0_base
 - [x] 板上 SigLIP dump 50/50 拉回（[`docs/10-board-siglip-dump.md`](./docs/10-board-siglip-dump.md)）
 - [x] 正式 PaliGemma（板上 SigLIP dump 校准，[`docs/11-paligemma-formal.md`](./docs/11-paligemma-formal.md)）
 - [ ] BF16 基线任务成功
-- [ ] 正式 PaliGemma 上板 → dump KV → 编正式 Expert  
+- [x] 正式 PaliGemma 上板（KV dump 准备，[`docs/12-formal-paligemma-on-board.md`](./docs/12-formal-paligemma-on-board.md) steps 1–2）
+- [ ] dump KV → 编正式 Expert  
   （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 

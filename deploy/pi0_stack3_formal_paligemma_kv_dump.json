@@ -1,0 +1,21 @@
+{
+  "runtime": "standalone_dnn",
+  "siglip_hbm_path": "/root/pi0_models/versions/pi0_stack3_040000_sdk102/siglip/pi0_siglip_ptq.hbm",
+  "paligemma_hbm_path": "/root/pi0_models/versions/pi0_stack3_040000_sdk102/paligemma/pi0_gemma_llm_ptq.hbm",
+  "action_hbm_path": "/root/pi0_models/versions/pi0_stack3_040000_sdk102/expert_float_bootstrap/pi0_gemma_expert_ptq.hbm",
+  "prompt_embedding_path": "/root/pi0_models/versions/pi0_stack3_040000_sdk102/paligemma/fixed_prompt_embedding.bin",
+  "siglip_bpu_core": [0, 1, 2],
+  "paligemma_bpu_core": [0],
+  "action_bpu_core": [0, 1, 2, 3],
+  "norm_stats_path": "/root/pi0_models/versions/pi0_stack3_040000_sdk102/norm_stats.json",
+  "server_ip": "127.0.0.1",
+  "server_port": 30001,
+  "state_size": 6,
+  "exec_size": 6,
+  "real_camera_num": 2,
+  "action_mode": "absolute",
+  "denoise_num": 10,
+  "parallel_siglip": true,
+  "task": "Stack the blocks from bottom to top: white, blue, black.",
+  "candidate_note": "stack3 KV dump stage: final SigLIP + formal PaliGemma + float Expert bootstrap"
+}

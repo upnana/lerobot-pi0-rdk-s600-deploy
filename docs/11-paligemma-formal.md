@@ -177,3 +177,7 @@ python -c "import json; m=json.load(open('$OUT/quantization_manifest.json')); pr
 2. 正品 SigLIP + **正式 PaliGemma** + 临时 Expert 起 engine  
 3. dump **PaliGemma KV**（`--save-expert-kv`）  
 4. 本机用 `--paligemma-kv-dir` 编**正式 Expert**
+
+## 下一步
+
+正式产物已出后，上板与 KV dump 准备见 [`docs/12-formal-paligemma-on-board.md`](./12-formal-paligemma-on-board.md)。
