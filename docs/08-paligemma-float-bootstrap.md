@@ -193,7 +193,7 @@ python -c "import json; print(json.load(open('$OUT/run_state.json'))['stage'])"
 
 ## 8. 下一步
 
-1. 同样垫脚编 **临时 Expert**（浮点中间量）  
+1. ~~同样垫脚编 **临时 Expert**~~ → 已完成，见 [09](./09-expert-float-bootstrap.md)  
 2. 把 SigLIP + 本步 PaliGemma + Expert + `fixed_prompt_embedding.bin` + `norm_stats` 拷上板  
 3. 起 engine → dump 真实 SigLIP → 再跑正式 `quantize_paligemma_real_calib.py`（带 `--vision-embeddings-dir`）
 

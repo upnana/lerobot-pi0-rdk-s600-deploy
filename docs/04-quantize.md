@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：SigLIP 本机 HBM 已出；**浮点垫脚临时 PaliGemma 已出**（[08](./08-paligemma-float-bootstrap.md)）；板端接入见 [06](./06-board-access.md) / [07](./07-board-prepare-siglip-dump.md)；下一步 bootstrap Expert → dump → 重编。
+> 状态：SigLIP 正品 HBM 已出；**浮点垫脚临时 PaliGemma + Expert 均已出**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；下一步上板 dump → 重编正式后两段。
 
 ## 核心原则（自己的话）
 
@@ -53,7 +53,7 @@
 |----|----------|--------|------|
 | SigLIP | `/home/rxn/gemma/output/pi0_stack3_040000_sdk102/siglip/pi0_siglip_ptq.hbm` | `123a9da5ac188917cde03fc504266ea3eede501a99d3168952af6817ceeb8915` | 425MB；patch quant8 / position fp16；编译 ~629s |
 | PaliGemma | | | 待板上 dump SigLIP 特征后量化 |
-| Expert | | | 待 PaliGemma KV dump 后量化 |
+| Expert | `expert_float_bootstrap/` | 临时已出；正式版待 KV dump | [09](./09-expert-float-bootstrap.md) |
 
 大文件不进 git；SHA256 与 `quantization_manifest.json` 留在本机产物目录。
 

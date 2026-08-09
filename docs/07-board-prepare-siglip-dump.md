@@ -1,7 +1,7 @@
 # 07 · 板端准备：拷文件 + 编 standalone（SigLIP dump 前置）
 
 > 状态：**拷贝与编译已完成**（2026-08-08）  
-> dump 本步仍 **blocked**：engine 启动还要 PaliGemma / Expert HBM + `fixed_prompt_embedding.bin`（目前只有 SigLIP）。
+> dump 本步：本机 **临时 PaliGemma + Expert 已齐**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；下一步把三份 HBM + embedding 补传到板再起 engine。
 
 前置：已完成 [06 板端接入](./06-board-access.md)，SSH：
 
@@ -138,7 +138,7 @@ EOF
 
 1. `siglip_hbm_path` ← **已有**（我们的 HBM）
 2. `paligemma_hbm_path` ← **还没有**
-3. `action_hbm_path`（Expert）← **还没有**
+3. `action_hbm_path`（Expert）← 临时已出，待 rsync（[09](./09-expert-float-bootstrap.md)）
 4. `prompt_embedding_path`（`fixed_prompt_embedding.bin`，形状 `[1,48,2048]` FP16）← **还没有**
 5. `norm_stats_path` ← **已有**
 
@@ -200,7 +200,7 @@ PI0_STANDALONE_DUMP_DIR=/root/pi0_calibration/engine_siglip_real50 \
 - [x] 串口 + SSH（`192.168.54.29`）
 - [x] rsync 工具仓 / 校准图 / SigLIP HBM / norm_stats
 - [x] 板上编译 `pi0_standalone_sdk102`
-- [ ] bootstrap PaliGemma (+ embedding) / Expert
+- [x] bootstrap PaliGemma (+ embedding) / Expert（本机已出，待补传上板）
 - [ ] 写 stage deployment JSON
 - [ ] 两终端 dump SigLIP 真实特征
 - [ ] 拉回本机 → 重编 PaliGemma
