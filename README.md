@@ -26,8 +26,8 @@
 | [01 环境](./docs/01-env.md) | 训练机 / 板端 / 路径备忘 | SDK + `oellm_s600` 已好 |
 | [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 已有 ckpt |
 | [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
-| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | **三段正式 HBM 均已出** |
-| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做（正式三份待上板） |
+| [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | **三段正式 HBM 均已出并上板** |
+| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做（正式 bundle 已上板，下一步 smoke/真机） |
 | [06 板端接入](./docs/06-board-access.md) | Type-C 串口、brltty、SSH、IP | **已走通** `192.168.54.29` |
 | [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝 SigLIP；PaliGemma/Expert 待补传 |
 | [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
@@ -37,6 +37,7 @@
 | [11 正式 PaliGemma](./docs/11-paligemma-formal.md) | 用板上 SigLIP dump 重编；fixed16 等 | **已完成** |
 | [12 正式 PaliGemma 上板](./docs/12-formal-paligemma-on-board.md) | rsync 正式 HBM/embedding、KV dump 准备 | **已完成**（含 KV dump） |
 | [13 正式 Expert](./docs/13-expert-formal.md) | 拉回 KV + 用板上 PaliGemma KV 重编 | **已完成** |
+| [14 最终上板 bundle](./docs/14-final-bundle-on-board.md) | 正式 Expert + 最终 JSON + validate | **已完成** |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -86,8 +87,9 @@ pi0_base
 - [x] 正式 PaliGemma（板上 SigLIP dump 校准，[`docs/11-paligemma-formal.md`](./docs/11-paligemma-formal.md)）
 - [x] 正式 PaliGemma 上板 + KV dump（[`docs/12-formal-paligemma-on-board.md`](./docs/12-formal-paligemma-on-board.md)）
 - [x] 正式 Expert（板上 PaliGemma KV 校准，[`docs/13-expert-formal.md`](./docs/13-expert-formal.md)）
+- [x] 最终正式 bundle 上板 + `pi0_stack3_final.json` validate OK（[`docs/14-final-bundle-on-board.md`](./docs/14-final-bundle-on-board.md)）
 - [ ] BF16 基线任务成功
-- [ ] 三份正式 HBM 上板 + 最终 deployment JSON → 离线 smoke / 真机  
+- [ ] 离线 smoke / 真机（正式 bundle 已上板）  
   （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 

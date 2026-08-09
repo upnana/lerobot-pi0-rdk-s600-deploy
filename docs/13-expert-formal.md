@@ -198,8 +198,6 @@ python -c "import json; m=json.load(open('$OUT/quantization_manifest.json')); pr
 
 ## 8. 下一步
 
-1. 把正式 Expert HBM 拷上板（`.../expert/`）  
-2. 写**最终** deployment JSON：正品 SigLIP + 正式 PaliGemma + **正式 Expert** + embedding + `norm_stats`  
-3. `validate_pi0_config` → 离线 smoke → 真机（注意 SO-101 / relative actions）
+正式 Expert 上板 + 最终 JSON + validate 已记在 [14](./14-final-bundle-on-board.md)。再往下：离线 smoke → 真机（注意 SO-101 / relative actions），见 [05](./05-deploy.md)。
 
-真机控制链路见 [05](./05-deploy.md)；KV 文件含义见 [notes/expert-kv-dump.md](../notes/expert-kv-dump.md)。
+KV 文件含义见 [notes/expert-kv-dump.md](../notes/expert-kv-dump.md)。

@@ -141,6 +141,14 @@
 - **处理：** 全 dynamic；产出 `expert/pi0_gemma_expert_ptq.hbm`，`paligemma_kv_source=precomputed_s600_paligemma_hbm`。详见 `docs/13-expert-formal.md`。
 - **是否量化相关：** 是
 
+
+### 2026-08-09 — 最终正式 bundle 上板
+
+- **现象：** 需要把正式 Expert 补上板，并让 deployment JSON 指向正式三份路径（非 `*_float_bootstrap`）。
+- **环境：** `root@192.168.54.29`，`VER=.../pi0_stack3_040000_sdk102`
+- **处理：** rsync `expert/pi0_gemma_expert_ptq.hbm` + manifest；scp `deploy/pi0_stack3_final.json`；`sha256sum` 对 Expert；`validate_pi0_config.py` → `PI0_SO100_STANDALONE_CONFIG_OK`。见 `docs/14-final-bundle-on-board.md`。
+- **是否量化相关：** 否（上板 / 部署配置）
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）
