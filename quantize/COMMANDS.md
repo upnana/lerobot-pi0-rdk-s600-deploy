@@ -17,7 +17,7 @@
 | S600 SDK 1.0.2 | 训练机已装 + `oellm_s600` | 板上 dump / runtime 另配 |
 | S600 板子 | **已 SSH** `root@192.168.54.29` | 串口/接入见 `docs/06-board-access.md`；文件已拷见 `docs/07-...` |
 | 板端 standalone | 已编译 | `/root/rdk_LeRobot_tools/.../pi0_standalone_sdk102` |
-| PaliGemma / Expert HBM | **临时两段均已出** | [08](../docs/08-paligemma-float-bootstrap.md) / [09](../docs/09-expert-float-bootstrap.md) |
+| PaliGemma / Expert HBM | **正式 PaliGemma 已出**；Expert 仍临时 | [11](../docs/11-paligemma-formal.md) / [09](../docs/09-expert-float-bootstrap.md) |
 
 确认权重：
 
@@ -167,6 +167,8 @@ export SIGLIP_HBM_CALIB=/home/rxn/gemma/calibration_data/pi0_stack3_040000_sigli
 ```
 
 ### 3.3 PaliGemma（必须用上面真实 SigLIP 输出）
+
+**完整记录（含 fixed16 / dynamic / prompt-embedding / max-hbm）→ [`docs/11-paligemma-formal.md`](../docs/11-paligemma-formal.md)。**
 
 ```bash
 python3 models/pi0/tools/quantize_paligemma_real_calib.py \

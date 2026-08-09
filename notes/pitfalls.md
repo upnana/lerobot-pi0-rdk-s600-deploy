@@ -127,6 +127,13 @@
 - **处理：** 改成同时接受 `["front","wrist"]`，再 rsync 工具仓上板。
 - **是否量化相关：** 是（校准 dump）
 
+### 2026-08-09 — 正式 PaliGemma（SigLIP HBM dump 校准）
+
+- **现象：** dump 拉回后需重编，不能继续用 `float_siglip` 垫脚版。
+- **环境：** `oellm_s600`，`--vision-embeddings-dir=.../siglip_hbm_real50`
+- **处理：** `attention_matmul_mode=fixed16`；linear/MLP `dynamic`；`--prompt-embedding-input`；`--max-hbm-bytes 2140000000`。详见 `docs/11-paligemma-formal.md`。
+- **是否量化相关：** 是
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）
