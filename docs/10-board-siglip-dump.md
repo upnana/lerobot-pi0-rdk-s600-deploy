@@ -2,9 +2,25 @@
 
 > 状态：**操作说明已定稿**（2026-08-09）；dump 本身待实跑勾选  
 > 前置：[07 板端准备](./07-board-prepare-siglip-dump.md) · [08 临时 PaliGemma](./08-paligemma-float-bootstrap.md) · [09 临时 Expert](./09-expert-float-bootstrap.md)  
-> 概念：[浮点垫脚 vs dump](../notes/bootstrap-vs-dump.md)
+> 概念：[浮点垫脚 vs dump](../notes/bootstrap-vs-dump.md)  
+> **先读讲解（PC vs 板、每步干什么）→ [10b](./10b-siglip-dump-where-and-why.md)**
 
 这一步目标：用 **正品 SigLIP** + **临时 PaliGemma/Expert** 把 `pi0_standalone` 拉起来，把 50 条校准图过一遍板上 SigLIP HBM，导出真实 `paligemma_inputs_embeds.bin`，拉回本机后重编正式 PaliGemma。
+
+---
+
+## 机器速查
+
+| 步骤 | 在哪执行 | 一句话 |
+|------|----------|--------|
+| 0 设变量 / 测 SSH | **PC** | 连上板子 |
+| 1 rsync 临时两段 + embedding | **PC 执行 → 文件到板** | 凑齐 3 份 HBM |
+| 2 改 dump 脚本(wrist) | **PC 改 → rsync 到板** | 接受 front/wrist |
+| 3 stage JSON + validate | **PC 写/传；validate 在板** | 告诉 engine 路径 |
+| 4 两终端 dump | **全在板**（先 A 后 B） | 真正跑 SigLIP HBM |
+| 5 拉回 embedding | **PC 执行 ← 从板拉** | 供重编正式 PaliGemma |
+
+更细的「每步在干什么」见 [10b](./10b-siglip-dump-where-and-why.md)。
 
 ---
 

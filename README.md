@@ -33,6 +33,7 @@
 | [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
 | [09 浮点垫脚 Expert](./docs/09-expert-float-bootstrap.md) | 临时 Expert HBM 编译全过程 | **已完成** |
 | [10 板上 SigLIP dump](./docs/10-board-siglip-dump.md) | 三份上板、改 wrist、两终端 dump | **操作手册已写**；待实跑 |
+| [10b dump 流程讲解](./docs/10b-siglip-dump-where-and-why.md) | 每步在 PC 还是板、在干什么 | 已写 |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
