@@ -6,6 +6,7 @@
 | [siglip-quantize-analysis.md](./siglip-quantize-analysis.md) | 我怎么理解 SigLIP 量化（叠积木视角） |
 | [calibration-images.md](./calibration-images.md) | 校准图是什么 |
 | [bootstrap-vs-dump.md](./bootstrap-vs-dump.md) | 为何要浮点垫脚才能 dump（死结逻辑） |
+| [expert-kv-dump.md](./expert-kv-dump.md) | `expert_kv_00`…`35` 是什么、给谁用 |
 
 板端逐步操作（串口 / SSH / rsync / standalone）见：
 

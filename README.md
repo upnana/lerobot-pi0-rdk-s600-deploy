@@ -40,6 +40,7 @@
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
 | [浮点垫脚 vs dump](./notes/bootstrap-vs-dump.md) | 为何 3 段 HBM 和 dump 互相等 | 已写 |
+| [Expert KV dump 是什么](./notes/expert-kv-dump.md) | `expert_kv_00`…`35` 分别是什么 | 已写 |
 | [量化环境](./quantize/ENV.md) | SDK 1.0.2 + conda `oellm_s600` | 已写 |
 | [完整命令](./quantize/COMMANDS.md) | 校准 → 量化 → 部署粘贴命令 | 已写 |
 

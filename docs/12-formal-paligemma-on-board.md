@@ -194,6 +194,8 @@ PI0_STANDALONE_DUMP_DIR=/root/pi0_calibration/engine_paligemma_kv_real50 \
 expert_kv_00_fp16.bin … expert_kv_35_fp16.bin
 ```
 
+含义说明（18 层 × K/V、`[1,816,256]` 等）→ [`notes/expert-kv-dump.md`](../notes/expert-kv-dump.md)。
+
 跑完后拉回本机，再用 `--paligemma-kv-dir` 编正式 Expert。
 
 ---
