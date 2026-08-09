@@ -1,6 +1,6 @@
 # 04 · 量化（级联，不能乱序）
 
-> 状态：SigLIP 正品 HBM 已出；**浮点垫脚临时 PaliGemma + Expert 均已出**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；下一步上板 dump → 重编正式后两段。
+> 状态：SigLIP 正品 HBM 已出；**浮点垫脚临时 PaliGemma + Expert 均已出**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；上板 dump 操作见 [10](./10-board-siglip-dump.md)。
 
 ## 核心原则（自己的话）
 

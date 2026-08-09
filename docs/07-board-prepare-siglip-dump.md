@@ -1,7 +1,7 @@
 # 07 · 板端准备：拷文件 + 编 standalone（SigLIP dump 前置）
 
 > 状态：**拷贝与编译已完成**（2026-08-08）  
-> dump 本步：本机 **临时 PaliGemma + Expert 已齐**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；下一步把三份 HBM + embedding 补传到板再起 engine。
+> dump 本步：本机 **临时 PaliGemma + Expert 已齐**（[08](./08-paligemma-float-bootstrap.md) / [09](./09-expert-float-bootstrap.md)）；**完整上板 + 两终端 dump 操作见 [10](./10-board-siglip-dump.md)**。
 
 前置：已完成 [06 板端接入](./06-board-access.md)，SSH：
 
@@ -201,6 +201,6 @@ PI0_STANDALONE_DUMP_DIR=/root/pi0_calibration/engine_siglip_real50 \
 - [x] rsync 工具仓 / 校准图 / SigLIP HBM / norm_stats
 - [x] 板上编译 `pi0_standalone_sdk102`
 - [x] bootstrap PaliGemma (+ embedding) / Expert（本机已出，待补传上板）
-- [ ] 写 stage deployment JSON
-- [ ] 两终端 dump SigLIP 真实特征
+- [ ] 写 stage deployment JSON（见 [10](./10-board-siglip-dump.md) / [`deploy/pi0_stack3_bootstrap_siglip_dump.json`](../deploy/pi0_stack3_bootstrap_siglip_dump.json)）
+- [ ] 两终端 dump SigLIP 真实特征（[10](./10-board-siglip-dump.md)）
 - [ ] 拉回本机 → 重编 PaliGemma

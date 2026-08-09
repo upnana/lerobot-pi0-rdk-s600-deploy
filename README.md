@@ -32,6 +32,7 @@
 | [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝 SigLIP；PaliGemma/Expert 待补传 |
 | [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
 | [09 浮点垫脚 Expert](./docs/09-expert-float-bootstrap.md) | 临时 Expert HBM 编译全过程 | **已完成** |
+| [10 板上 SigLIP dump](./docs/10-board-siglip-dump.md) | 三份上板、改 wrist、两终端 dump | **操作手册已写**；待实跑 |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -78,7 +79,7 @@ pi0_base
 - [x] 浮点垫脚临时 Expert（[`docs/09-expert-float-bootstrap.md`](./docs/09-expert-float-bootstrap.md)）
 - [ ] BF16 基线任务成功
 - [ ] 三份上板 → dump SigLIP → 重编正式 PaliGemma / Expert  
-  （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
+  （操作见 [`docs/10-board-siglip-dump.md`](./docs/10-board-siglip-dump.md)；死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 
 可粘贴命令见 [`quantize/COMMANDS.md`](./quantize/COMMANDS.md)。

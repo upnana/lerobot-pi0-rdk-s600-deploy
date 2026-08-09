@@ -156,11 +156,6 @@ python -c "import json; print(json.load(open('$OUT/quantization_manifest.json'))
 
 ## 6. 下一步（板端 dump）
 
-三份已齐，可以：
+三份已齐。**逐步命令（rsync / JSON / 两终端 / 拉回）整篇见 [10 · 板上 SigLIP dump](./10-board-siglip-dump.md)。**
 
-1. 把 **正品 SigLIP** + **临时 PaliGemma**（含 `fixed_prompt_embedding.bin`）+ **临时 Expert** + `norm_stats` 拷到 S600  
-2. 写 stage deployment JSON，起 `pi0_standalone`  
-3. `dump_siglip_hbm_calibration.py` 收真实 SigLIP embedding  
-4. 拉回本机 → 重编正式 PaliGemma → 再 dump KV → 重编正式 Expert  
-
-板端路径与 rsync 见 [07](./07-board-prepare-siglip-dump.md)；PaliGemma 垫脚见 [08](./08-paligemma-float-bootstrap.md)。
+板端路径预备见 [07](./07-board-prepare-siglip-dump.md)；PaliGemma 垫脚见 [08](./08-paligemma-float-bootstrap.md)。

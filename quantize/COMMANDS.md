@@ -137,31 +137,33 @@ python3 models/pi0/tools/quantize_siglip_real_calib.py \
 
 ### 3.2 板上 dump SigLIP 真实输出（S600）
 
-把新 SigLIP HBM + 校准图传到板子，写一份**只绑 SigLIP** 的临时 deployment JSON，然后：
+**完整操作手册（rsync 临时两段、改 wrist、stage JSON、先 A 后 B、拉回）→ [`docs/10-board-siglip-dump.md`](../docs/10-board-siglip-dump.md)。**
+
+摘要（板上；用系统 `python3`，校准目录是 `_real50_v2`）：
 
 ```bash
-# ===== 板端终端 A：收 dump =====
+# ===== 终端 A：先开 =====
 cd /root/rdk_LeRobot_tools/models/pi0
-/home/sunrise/lerobot/.venv/bin/python -u dump_siglip_hbm_calibration.py \
-  --calibration-dir /root/calibration_data/pi0_stack3_040000_real50 \
+python3 -u dump_siglip_hbm_calibration.py \
+  --calibration-dir /root/calibration_data/pi0_stack3_040000_real50_v2 \
   --engine-dump-dir /root/pi0_calibration/engine_siglip_real50 \
   --output-dir /root/calibration_data/pi0_stack3_040000_siglip_hbm_real50 \
   --prompt 'Stack the blocks from bottom to top: white, blue, black.'
 
-# ===== 板端终端 B：起 engine =====
+# ===== 终端 B：见到 SERVER_READY 后再开 =====
 cd /root/rdk_LeRobot_tools/models/pi0
 export LD_LIBRARY_PATH=/root/D-Robotics_LLM_S600_1.0.2_SDK/oellm_runtime/lib:$LD_LIBRARY_PATH
 export HB_DNN_USER_DEFINED_L2M_SIZES=6:6:6:6
 PI0_STANDALONE_DUMP_DIR=/root/pi0_calibration/engine_siglip_real50 \
-./run_pi0_standalone_config.sh configs/deployments/<SIGLIP_STAGE_CONFIG>.json
+./run_pi0_standalone_config.sh \
+  configs/deployments/pi0_stack3_bootstrap_siglip_dump.json
 ```
 
-把板端产出的 `pi0_stack3_040000_siglip_hbm_real50` 拉回量化机：
+拉回：
 
 ```bash
 export SIGLIP_HBM_CALIB=/home/rxn/gemma/calibration_data/pi0_stack3_040000_siglip_hbm_real50
-# scp -r root@<S600_IP>:/root/calibration_data/pi0_stack3_040000_siglip_hbm_real50 \
-#   /home/rxn/gemma/calibration_data/
+# rsync 见 docs/10
 ```
 
 ### 3.3 PaliGemma（必须用上面真实 SigLIP 输出）

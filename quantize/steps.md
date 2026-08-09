@@ -101,9 +101,9 @@ $QUANT_OUT/siglip/quantize_siglip.log
 - [x] rsync HBM/校准/工具 + 编 standalone → [`docs/07-board-prepare-siglip-dump.md`](../docs/07-board-prepare-siglip-dump.md)
 - [x] 浮点垫脚临时 PaliGemma → [`docs/08-paligemma-float-bootstrap.md`](../docs/08-paligemma-float-bootstrap.md)
 - [x] 浮点垫脚临时 Expert → [`docs/09-expert-float-bootstrap.md`](../docs/09-expert-float-bootstrap.md)
-- [ ] 三份上板后才能真正 dump
+- [ ] 三份上板后才能真正 dump（操作手册 → [`docs/10-board-siglip-dump.md`](../docs/10-board-siglip-dump.md)）
 
-板上 dump（仍待做；命令见 `COMMANDS.md` §3.2）：
+板上 dump（仍待做；完整步骤见 `docs/10`，摘要见 `COMMANDS.md` §3.2）：
 
 ```bash
 # 终端 A：收集 SigLIP HBM 输出

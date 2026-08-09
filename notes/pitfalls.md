@@ -119,6 +119,14 @@
 - **处理：** `quantize_expert_real_calib.py` → `expert_float_bootstrap/pi0_gemma_expert_ptq.hbm`（~329MB，`float_paligemma`）；详见 `docs/09-expert-float-bootstrap.md`。
 - **是否量化相关：** 是
 
+### 2026-08-09 — dump 脚本只认 front/side
+
+- **现象：** 校准 `camera_keys=["front","wrist"]`，`dump_siglip_hbm_calibration.py` 直接 ValueError。
+- **环境：** 板上 SigLIP dump（[`docs/10-board-siglip-dump.md`](../docs/10-board-siglip-dump.md)）
+- **原因：** 官方脚本写死 `["front","side"]`；读图其实只用 `image_0/1.jpg`。
+- **处理：** 改成同时接受 `["front","wrist"]`，再 rsync 工具仓上板。
+- **是否量化相关：** 是（校准 dump）
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）
