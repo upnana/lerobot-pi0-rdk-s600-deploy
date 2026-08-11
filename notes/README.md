@@ -7,6 +7,7 @@
 | [calibration-images.md](./calibration-images.md) | 校准图是什么 |
 | [bootstrap-vs-dump.md](./bootstrap-vs-dump.md) | 为何要浮点垫脚才能 dump（死结逻辑） |
 | [expert-kv-dump.md](./expert-kv-dump.md) | `expert_kv_00`…`35` 是什么、给谁用 |
+| [bench/](./bench/) | 离线 smoke / BF16 vs HBM 对比数据与备忘 |
 
 板端逐步操作（串口 / SSH / rsync / standalone）见：
 

@@ -157,5 +157,5 @@ python3 -u pi0_standalone_offline.py \
 
 - [x] rsync 正式 Expert 上板  
 - [x] 最终 JSON 上传 + `validate` OK  
-- [ ] 离线 smoke `[50,6]`  
+- [x] 离线 smoke `[50,6]`  
 - [ ] 真机跑通  

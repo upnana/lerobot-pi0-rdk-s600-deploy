@@ -1,0 +1,69 @@
+{
+  "device": "S600 board root@192.168.54.29",
+  "runtime": "oellm_hbm_standalone",
+  "dtype": "HBM quantized (pi0_stack3_final)",
+  "dtype_runtime": "HBM quantized (pi0_stack3_final)",
+  "config": "configs/deployments/pi0_stack3_final.json",
+  "output_dir": "diagnostics/offline_smoke_stack3_final_20260811_155544",
+  "task": "Stack the blocks from bottom to top: white, blue, black.",
+  "state": [
+    -16.07499,
+    -97.96352,
+    98.28597,
+    54.99168,
+    4.045941,
+    2.6623378
+  ],
+  "fixed_noise_file": "/root/rdk_LeRobot_tools/models/pi0/configs/fixed_noise_cv_12345678_fp16.bin",
+  "fixed_noise_present": true,
+  "load_seconds": null,
+  "load_note": "Standalone smoke does not separately report model load time; engine.log shows HBM init only",
+  "inference_ms": 1224.7142429987434,
+  "inference_ms_mean": 1224.7142429987434,
+  "latency_ms": {
+    "mean": 1224.7142429987434
+  },
+  "timed_runs": 1,
+  "action_shape": [
+    50,
+    6
+  ],
+  "shape": [
+    50,
+    6
+  ],
+  "first_action": [
+    1.1561588529759492,
+    -1.9482677198055618,
+    -3.8258794739250996,
+    -0.6534761060539236,
+    -1.497498301351636,
+    2.514604426619222
+  ],
+  "stage_timings": {
+    "siglip_ms": null,
+    "expert_x10_ms": null,
+    "pi0_request_total_ms": null,
+    "note": "engine.log has no stage timing lines; only end-to-end client RTT in result.json"
+  },
+  "action_compare_vs_bf16_fixed_noise": {
+    "bf16_noise": "fixed_noise_cv_12345678_fp16.bin (extra run; latency uses noise_seed=0)",
+    "hbm_noise": "fixed_noise_cv_12345678_fp16.bin",
+    "comparable": true,
+    "representation_note": "BF16 LeRobot postprocessor returns absolute joint degrees. HBM offline smoke returns relative arm deltas with absolute-scale gripper (matches use_relative_actions / relative_exclude_joints=[gripper]). MAE/RMSE computed after converting BF16 abs->mixed (delta j0-4, abs gripper).",
+    "mae_degrees_mixed": 1.5954646723872985,
+    "rmse_degrees_mixed": 2.3212235047745158,
+    "mae_per_dim_mixed": [
+      0.5210743634970345,
+      1.3563982181463559,
+      1.122099228270844,
+      3.841243581114429,
+      0.7921070803856101,
+      1.9398655629095185
+    ],
+    "mae_naive_bf16_minus_state_vs_hbm": 1.7228886667128525
+  },
+  "engine_log_excerpt": "PI0_SO100_STANDALONE_CONFIG_OK\n[UCP]: log level = 3\n[UCP]: UCP version = 3.13.3\n[VP]: log level = 3\n[DNN]: log level = 3\n[HPL]: log level = 3\n[UCPT]: log level = 6\n[BPU][[BPU_MONITOR]][281463242348160][INFO]BPULib verison(2, 2, 15)[f21ee84]!\n[DNN]: 3.13.3_(4.8.1a2dev202512120401+7d8bb98.develop HBRT)\n[I][mod_mgr] Load hbm file '{}' success.\n[I][mod_mgr] model_count_ is: {}\n[I][mod_mgr] Load dnn model success. hbm_name is: {}, model_name is: {}\n[D][mod_mgr] Init model[{}]: '{}' success\n[D][mod_mgr] compiled bpu cores: model='{}' cores={}\n[I][mod_mgr] model_count_ is: {}\n[D][mod_mgr] Init model[{}]: '{}' success\n[D][mod_mgr] compiled bpu cores: model='{}' cores={}\n[I][mod_mgr] model_count_ is: {}\n[D][mod_mgr] Init model[{}]: '{}' success\n[D][mod_mgr] compiled bpu cores: model='{}' cores={}\n",
+  "actions_omitted": true,
+  "actions_len": 50
+}

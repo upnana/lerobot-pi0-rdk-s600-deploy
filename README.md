@@ -27,7 +27,7 @@
 | [02 训练 π0](./docs/02-train.md) | base → post-training → checkpoint | 已有 ckpt |
 | [03 BF16 基线](./docs/03-bf16-baseline.md) | 服务器浮点验证，量化前必过 | 待做 |
 | [04 量化](./docs/04-quantize.md) | SigLIP → PaliGemma → Expert | **三段正式 HBM 均已出并上板** |
-| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 待做（正式 bundle 已上板，下一步 smoke/真机） |
+| [05 板上部署](./docs/05-deploy.md) | S600 真机推理与控制 | 离线 smoke 已过；真机待做 |
 | [06 板端接入](./docs/06-board-access.md) | Type-C 串口、brltty、SSH、IP | **已走通** `192.168.54.29` |
 | [07 板端准备 dump](./docs/07-board-prepare-siglip-dump.md) | rsync HBM/校准、编 standalone | 已拷贝 SigLIP；PaliGemma/Expert 待补传 |
 | [08 浮点垫脚 PaliGemma](./docs/08-paligemma-float-bootstrap.md) | 临时 PaliGemma HBM 编译全过程 | **已完成** |
@@ -38,6 +38,7 @@
 | [12 正式 PaliGemma 上板](./docs/12-formal-paligemma-on-board.md) | rsync 正式 HBM/embedding、KV dump 准备 | **已完成**（含 KV dump） |
 | [13 正式 Expert](./docs/13-expert-formal.md) | 拉回 KV + 用板上 PaliGemma KV 重编 | **已完成** |
 | [14 最终上板 bundle](./docs/14-final-bundle-on-board.md) | 正式 Expert + 最终 JSON + validate | **已完成** |
+| [15 离线 smoke / BF16 vs HBM](./docs/15-offline-smoke-bf16-vs-hbm.md) | 板上 `[50,6]` + 时延与动作误差 | **已完成**（非真机） |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -89,7 +90,8 @@ pi0_base
 - [x] 正式 Expert（板上 PaliGemma KV 校准，[`docs/13-expert-formal.md`](./docs/13-expert-formal.md)）
 - [x] 最终正式 bundle 上板 + `pi0_stack3_final.json` validate OK（[`docs/14-final-bundle-on-board.md`](./docs/14-final-bundle-on-board.md)）
 - [ ] BF16 基线任务成功
-- [ ] 离线 smoke / 真机（正式 bundle 已上板）  
+- [x] 离线 smoke（正式 bundle；见 [docs/15](./docs/15-offline-smoke-bf16-vs-hbm.md)）
+- [ ] 真机（正式 bundle 已上板）  
   （死结逻辑见 [`notes/bootstrap-vs-dump.md`](./notes/bootstrap-vs-dump.md)）
 - [ ] S600 真机跑通
 

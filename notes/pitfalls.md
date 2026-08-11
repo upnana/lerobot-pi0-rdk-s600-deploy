@@ -149,6 +149,15 @@
 - **处理：** rsync `expert/pi0_gemma_expert_ptq.hbm` + manifest；scp `deploy/pi0_stack3_final.json`；`sha256sum` 对 Expert；`validate_pi0_config.py` → `PI0_SO100_STANDALONE_CONFIG_OK`。见 `docs/14-final-bundle-on-board.md`。
 - **是否量化相关：** 否（上板 / 部署配置）
 
+
+### 2026-08-11 — HBM 比 3090 BF16 慢是平台差，不是量化失败
+
+- **现象：** S600 离线 smoke 端到端 ~1225 ms，RTX 3090 BF16 ~155 ms（~8×）；同 sample 动作 MAE ~1.6°。
+- **环境：** 正式 bundle `pi0_stack3_final.json`；对比见 [`docs/15-offline-smoke-bf16-vs-hbm.md`](../docs/15-offline-smoke-bf16-vs-hbm.md)、[`notes/bench/compare_bf16_vs_hbm_sample0.md`](./bench/compare_bf16_vs_hbm_sample0.md)。
+- **原因：** 这是 **3090 BF16 vs S600 HBM** 的跨平台对比，不是同芯片「浮点 vs 量化」。HBM 是为了能上板，不是为了赢过桌面 GPU。
+- **处理：** 把时延/MAE 记入 `notes/bench/`；真机闭环仍待做。MAE~1.6° 说明量化链路可用，慢主要是算力平台差。
+- **是否量化相关：** 是（结果解读，非失败）
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）
