@@ -7,13 +7,13 @@
 
 ## Demo · π0 on S600（真机推理）
 
-SO-101 · 叠积木白→蓝→黑 · RDK S600 闭环推理片段：
+SO-101 · 叠积木白→蓝→黑 · RDK S600 闭环推理：
 
-https://github.com/upnana/lerobot-pi0-rdk-s600-deploy/raw/main/media/pi0_s600_infer_stack3.mp4
+<p align="center">
+  <img src="./media/pi0_s600_infer_stack3.gif" alt="π0 on RDK S600 inference demo" width="480" />
+</p>
 
-<video src="./media/pi0_s600_infer_stack3.mp4" controls width="720"></video>
-
-（若 GitHub 页面未内嵌播放，点上面链接下载/观看。文件：[`media/pi0_s600_infer_stack3.mp4`](./media/pi0_s600_infer_stack3.mp4)）
+完整 MP4（可下载）：[`media/pi0_s600_infer_stack3.mp4`](./media/pi0_s600_infer_stack3.mp4)
 
 ## 这次复现的任务
 

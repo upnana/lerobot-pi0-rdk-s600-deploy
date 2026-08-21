@@ -42,3 +42,4 @@ dist/
 # Allow portfolio inference clip on README
 !media/
 !media/*.mp4
+!media/*.gif
