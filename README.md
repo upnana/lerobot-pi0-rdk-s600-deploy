@@ -39,7 +39,8 @@
 | [13 正式 Expert](./docs/13-expert-formal.md) | 拉回 KV + 用板上 PaliGemma KV 重编 | **已完成** |
 | [14 最终上板 bundle](./docs/14-final-bundle-on-board.md) | 正式 Expert + 最终 JSON + validate | **已完成** |
 | [15 离线 smoke / BF16 vs HBM](./docs/15-offline-smoke-bf16-vs-hbm.md) | 板上 `[50,6]` + 时延与动作误差 | **已完成**（非真机） |
-| [16 真机收尾](./docs/16-live-robot.md) | 只读 → 判定 relative → execute | **准备中**（先恢复板 SSH） |
+| [16 真机收尾](./docs/16-live-robot.md) | 只读 → relative→absolute → execute | **已跑通**（短 execute + 录像） |
+| [17 真机实验总结](./docs/17-live-experiments-summary.md) | 2026-08-21 真机/录像/replay 记录 | **已写** |
 | [踩坑本](./notes/pitfalls.md) | 问题 → 原因 → 处理 | 进行中 |
 | [SigLIP 量化分析](./notes/siglip-quantize-analysis.md) | 我怎么理解第一段量化 | 已写 |
 | [校准图](./notes/calibration-images.md) | 校准图是什么、从哪来、干什么 | 已写 |
@@ -92,8 +93,10 @@ pi0_base
 - [x] 最终正式 bundle 上板 + `pi0_stack3_final.json` validate OK（[`docs/14-final-bundle-on-board.md`](./docs/14-final-bundle-on-board.md)）
 - [ ] BF16 基线任务成功
 - [x] 离线 smoke（正式 bundle；见 [docs/15](./docs/15-offline-smoke-bf16-vs-hbm.md)）
-- [ ] 真机收尾（[`docs/16-live-robot.md`](./docs/16-live-robot.md)）
-- [ ] S600 真机跑通（视频）
+- [x] 真机只读 + relative→absolute + 短 execute（[`docs/16`](./docs/16-live-robot.md)、[`docs/17`](./docs/17-live-experiments-summary.md)）
+- [x] π0 execute 录像片段 + dataset teleop replay 录像（视频不进 git，见 docs/17 本地路径）
+- [ ] 叠积木任务稳定成功（完整成功视频）
+- [ ] BF16 基线任务成功
 
 可粘贴命令见 [`quantize/COMMANDS.md`](./quantize/COMMANDS.md)。
 

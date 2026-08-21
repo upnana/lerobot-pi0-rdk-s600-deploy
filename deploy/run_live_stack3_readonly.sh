@@ -13,14 +13,16 @@ export LD_LIBRARY_PATH="/root/D-Robotics_LLM_S600_1.0.2_SDK/oellm_runtime/lib:${
 export HB_DNN_USER_DEFINED_L2M_SIZES="${HB_DNN_USER_DEFINED_L2M_SIZES:-6:6:6:6}"
 
 # ===== 按板子实机修改 =====
-ROBOT_PORT="${ROBOT_PORT:-/dev/ttyACM0}"
+ROBOT_PORT="${ROBOT_PORT:-/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6083854-if00}"
 ROBOT_ID="${ROBOT_ID:-so101_follower}"
 CALIB_DIR="${CALIB_DIR:-$PI0/calibration/robots/so_follower}"
 CALIB_FILE="${CALIB_FILE:-$CALIB_DIR/${ROBOT_ID}.json}"
+# UGREEN → often video0; USB2.0_CAM1 → video2 (override if swapped)
 FRONT_CAM="${FRONT_CAM:-/dev/video0}"
 WRIST_CAM="${WRIST_CAM:-/dev/video2}"
 LEROBOT_ROOT="${LEROBOT_ROOT:-/root/lerobot}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
+export PYTHONPATH="${LEROBOT_ROOT}/src${PYTHONPATH:+:$PYTHONPATH}"
 # ==========================
 
 NORM_STATS="/root/pi0_models/versions/pi0_stack3_040000_sdk102/norm_stats.json"
@@ -42,6 +44,7 @@ EXPERT_SHA=125d00fb98a2bb4ef916d1858bbed19e50e029775fe72a19cebbe68b9bae4b32
 PROMPT_SHA=e4e974e2aca9b6f36f91ffb3021514406f7ea25c9fd0e6b57a503dfebf87b963
 
 echo "READONLY live: no --execute (torque stays off)"
+echo "Using --relative-actions: absolute = relative + state (gripper excluded)"
 echo "ROBOT_PORT=$ROBOT_PORT FRONT=$FRONT_CAM WRIST=$WRIST_CAM"
 echo "CALIB_FILE=$CALIB_FILE sha=$CALIB_SHA"
 
@@ -69,4 +72,6 @@ exec "$PYTHON_BIN" -u pi0_full_pipeline.py \
   --no-fixed-noise \
   --save-artifact-every-chunks 0 \
   --output-dir "$RUN_DIR/output" \
+  --relative-actions \
+  --relative-exclude-joints gripper \
   "$@"

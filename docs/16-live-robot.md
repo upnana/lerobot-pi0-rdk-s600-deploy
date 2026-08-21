@@ -1,8 +1,9 @@
 # 16 · 真机收尾（040000 正式 bundle）
 
-> 状态：**准备中** — 板子 `192.168.54.29` 曾出现 **No route to host**；先恢复 SSH，再按本文做。  
-> 模型：继续用 **`pi0_stack_white_blue_black_040000`**（2cam），不要混 3cam 新 ckpt。  
-> Bundle：[`pi0_stack3_final.json`](../deploy/pi0_stack3_final.json) · 离线 smoke 已过：[15](./15-offline-smoke-bf16-vs-hbm.md)
+> 状态：**真机短闭环已跑通**（只读 → `--relative-actions` → execute；可 `--record-video`）。  
+> 完整实验记录见 **[17 真机实验总结](./17-live-experiments-summary.md)**。  
+> 模型：继续用 **`pi0_stack_white_blue_black_040000`**（2cam）；3cam 新 ckpt 需重新量化。  
+> Bundle：[`pi0_stack3_final.json`](../deploy/pi0_stack3_final.json)
 
 官方入口是 `pi0_full_pipeline.py`（硬编码 `SO100Follower`）。SO-101 通常仍走同一套 so_follower 串口协议，但 **标定文件 / robot-id / 端口** 必须用你的臂。
 
@@ -163,15 +164,16 @@ export PYTHON_BIN=python3          # 或 sunrise venv 的 python
 
 ## 勾选
 
-- [ ] 板子 SSH 恢复  
-- [ ] 臂 + front/wrist 接到 S600，设备节点确认  
-- [ ] 板上 `import lerobot` OK + SO-101 标定文件就位  
-- [ ] 只读 live：有 state/action 日志，判定 absolute vs relative  
-- [ ] relative 已处理（若需要）后再 `--execute`  
-- [ ] 叠积木至少成功一次 + 视频  
-- [ ] 回写本章真实端口 / 命令  
+- [x] 板子 SSH 恢复  
+- [x] 臂 + front/wrist 接到 S600，设备节点确认  
+- [x] 板上 `import lerobot` OK + SO-101 标定文件就位  
+- [x] 只读 live：有 state/action 日志，判定 absolute vs relative  
+- [x] relative 已处理后再 `--execute`（短跑 OK）  
+- [ ] 叠积木至少成功一次 + 成功视频  
+- [x] 回写真实端口 / 命令（见 [17](./17-live-experiments-summary.md)）  
 
 脚本：
 
 - [`deploy/run_live_stack3_readonly.sh`](../deploy/run_live_stack3_readonly.sh)  
-- [`deploy/run_live_stack3.sh`](../deploy/run_live_stack3.sh)  
+- [`deploy/run_live_stack3.sh`](../deploy/run_live_stack3.sh)（含 `--record-video`）  
+- [`deploy/replay/`](../deploy/replay/)（dataset teleop 回放）  

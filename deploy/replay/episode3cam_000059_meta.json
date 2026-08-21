@@ -1,0 +1,23 @@
+{
+  "dataset": "stack_3blocks_white_blue_black_3cam",
+  "dataset_root": "/home/rxn/datasets/stack_3blocks_white_blue_black_3cam",
+  "episode_index": 59,
+  "fps": 30,
+  "num_frames": 644,
+  "action_names": [
+    "shoulder_pan.pos",
+    "shoulder_lift.pos",
+    "elbow_flex.pos",
+    "wrist_flex.pos",
+    "wrist_roll.pos",
+    "gripper.pos"
+  ],
+  "cameras": [
+    "observation.images.front",
+    "observation.images.wrist",
+    "observation.images.side"
+  ],
+  "task": "Stack the blocks from bottom to top: white, blue, black.",
+  "label_for_portfolio": "dataset_teleop_replay_3cam",
+  "note": "3cam dataset teleop replay. Board recording still uses front+wrist (side optional)."
+}

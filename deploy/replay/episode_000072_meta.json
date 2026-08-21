@@ -1,0 +1,17 @@
+{
+  "dataset": "stack_3blocks_white_blue_black_2cam",
+  "episode_index": 72,
+  "fps": 30,
+  "num_frames": 578,
+  "action_names": [
+    "shoulder_pan.pos",
+    "shoulder_lift.pos",
+    "elbow_flex.pos",
+    "wrist_flex.pos",
+    "wrist_roll.pos",
+    "gripper.pos"
+  ],
+  "task": "Stack the blocks from bottom to top: white, blue, black.",
+  "label_for_portfolio": "dataset_teleop_replay",
+  "note": "Teleop trajectory replay from dataset \u2014 NOT pi0 policy inference."
+}

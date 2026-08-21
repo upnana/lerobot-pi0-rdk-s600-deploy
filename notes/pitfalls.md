@@ -158,6 +158,33 @@
 - **处理：** 把时延/MAE 记入 `notes/bench/`；真机闭环仍待做。MAE~1.6° 说明量化链路可用，慢主要是算力平台差。
 - **是否量化相关：** 是（结果解读，非失败）
 
+### 2026-08-21 — relative actions 直接 execute 会飞 / 门禁炸
+
+- **现象：** 只读 `action0` 为几度级，`state` 为 ±100°；`max_first_delta≈100`。
+- **环境：** S600 + `pi0_stack3_040000` + SO-101
+- **原因：** 训练 `use_relative_actions=true`；官方 `pi0_full_pipeline` 把输出当绝对 Goal_Position。
+- **处理：** 板端加 `--relative-actions`：`absolute = relative + infer_state`（gripper exclude）；脚本默认打开。
+- **是否量化相关：** 否（控制语义）
+
+### 2026-08-21 — execute 不能 `--no-fixed-noise`
+
+- **现象：** `RuntimeError: Initial motor smoke requires fixed noise`
+- **处理：** 去掉 execute 脚本里的 `--no-fixed-noise`。
+- **是否量化相关：** 否
+
+### 2026-08-21 — dataset replay 抓不准
+
+- **现象：** 回放夹空 / 偏目标。
+- **原因：** 开环重放关节，不看当前积木位置。
+- **处理：** 按录制参考图摆场；或改用看图的 π0 execute。Replay 勿标成 inference。
+- **是否量化相关：** 否
+
+### 2026-08-21 — 长跑 Feetech 总线掉线
+
+- **现象：** execute 中途 `no status packet`，录像约 24 chunk 后失败。
+- **处理：** 查供电/USB；缩短 chunk；失败后重新插拔再跑。
+- **是否量化相关：** 否
+
 ## 待填
 
 ### YYYY-MM-DD — （标题）
