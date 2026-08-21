@@ -38,3 +38,7 @@ dist/
 .vscode/
 *.log
 .DS_Store
+
+# Allow portfolio inference clip on README
+!media/
+!media/*.mp4

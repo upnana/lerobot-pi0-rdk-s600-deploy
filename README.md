@@ -5,6 +5,16 @@
 > 参考（不是照搬）：[地瓜论坛原帖](https://forum.d-robotics.cc/t/topic/35528) · 官方工具 [`rdk_LeRobot_tools` s600](https://github.com/D-Robotics/rdk_LeRobot_tools)  
 > 本仓写的是**我自己走通时的步骤、命令和踩坑**，以本机实操为准。
 
+## Demo · π0 on S600（真机推理）
+
+SO-101 · 叠积木白→蓝→黑 · RDK S600 闭环推理片段：
+
+https://github.com/upnana/lerobot-pi0-rdk-s600-deploy/raw/main/media/pi0_s600_infer_stack3.mp4
+
+<video src="./media/pi0_s600_infer_stack3.mp4" controls width="720"></video>
+
+（若 GitHub 页面未内嵌播放，点上面链接下载/观看。文件：[`media/pi0_s600_infer_stack3.mp4`](./media/pi0_s600_infer_stack3.mp4)）
+
 ## 这次复现的任务
 
 | 项 | 我的配置 |

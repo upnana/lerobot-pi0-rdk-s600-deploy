@@ -66,19 +66,24 @@ action0≈ [0.03, -4.7, -0.5, ...]       # 臂为增量
 
 **总线：** 长跑中途出现 `no status packet`，力矩关闭也可能失败——需重新插拔/检查供电后再跑。
 
-### 3.3 π0 推理录像（求职可用，需诚实标注）
+### 3.3 π0 推理录像（求职 / README 主页）
 
-本地（PC，自板拉取）：
+仓库主页 Demo 视频（用户选定片段）：
+
+```text
+media/pi0_s600_infer_stack3.mp4
+```
+
+README 置顶展示。建议 caption：
+
+> π0 on RDK S600 closed-loop inference — stack white→blue→black
+
+板端当时另有自动录制片段（可不进 git）：
 
 ```text
 tmp_replay_assets/videos/live_stack3_exec_20260821_210523/output/
-  pi0_s600_infer_front_wrist_h264.mp4   # ~6.2MB，~41s，front|wrist
+  pi0_s600_infer_front_wrist_h264.mp4
 ```
-
-建议 caption：
-
-> π0 on RDK S600 closed-loop inference — stack white→blue→black  
-> （本段未稳定完成整次叠积木；视频为真实 HBM 闭环片段）
 
 ---
 
