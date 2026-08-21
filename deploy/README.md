@@ -9,17 +9,19 @@ RDK S600 真机推理：加载三段 HBM，接 SO-101 与 `front`/`wrist`。
 3. `validate_pi0_config.py`
 4. `pi0_standalone_offline.py` smoke（期望 `[50,6]`）
 5. 只读真机 → 再执行动作
-6. `./run_on_s600.sh` 或官方 `run_live_sync.sh`
+6. [`run_live_stack3_readonly.sh`](./run_live_stack3_readonly.sh) / [`run_live_stack3.sh`](./run_live_stack3.sh)
 
 ## 脚本 / 配置
 
 - [`run_on_s600.sh`](./run_on_s600.sh)：板端启动模板
-- [`pi0_stack3_bootstrap_siglip_dump.json`](./pi0_stack3_bootstrap_siglip_dump.json)：临时三份 HBM 起 engine，专用于板上 SigLIP dump（见 [docs/10](../docs/10-board-siglip-dump.md)）
-- [`pi0_stack3_formal_paligemma_kv_dump.json`](./pi0_stack3_formal_paligemma_kv_dump.json)：正式 PaliGemma HBM + embedding，用于板上 KV dump 准备（见 [docs/12](../docs/12-formal-paligemma-on-board.md)）
-- [`pi0_stack3_final.json`](./pi0_stack3_final.json)：三段正式 HBM 最终 deployment JSON（见 [docs/14](../docs/14-final-bundle-on-board.md)）
+- [`pi0_stack3_bootstrap_siglip_dump.json`](./pi0_stack3_bootstrap_siglip_dump.json)：SigLIP dump 用
+- [`pi0_stack3_formal_paligemma_kv_dump.json`](./pi0_stack3_formal_paligemma_kv_dump.json)：KV dump 用
+- [`pi0_stack3_final.json`](./pi0_stack3_final.json)：三段正式 HBM
+- [`run_live_stack3_readonly.sh`](./run_live_stack3_readonly.sh) / [`run_live_stack3.sh`](./run_live_stack3.sh)：真机只读 / 执行
 
 ## 参考
 
-- 板上 dump 操作：[docs/10-board-siglip-dump.md](../docs/10-board-siglip-dump.md)
+- 真机收尾：[docs/16-live-robot.md](../docs/16-live-robot.md)
+- 板上 dump：[docs/10-board-siglip-dump.md](../docs/10-board-siglip-dump.md)
 - 正文：[docs/05-deploy.md](../docs/05-deploy.md)
 - 官方：`rdk_LeRobot_tools/models/pi0/`
